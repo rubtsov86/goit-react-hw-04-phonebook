@@ -17,14 +17,15 @@ export function App() {
   const [firstRender, setFirstRender] = useState(true);
 
   useEffect(() => {
+    setFirstRender(false);
     const savedContacts = localStorage.getItem('contacts');
+
     if (!savedContacts) {
       return;
     }
 
     const parsedContacts = JSON.parse(savedContacts);
     setContacts([...parsedContacts]);
-    setFirstRender(false);
   }, []);
 
   useEffect(() => {
