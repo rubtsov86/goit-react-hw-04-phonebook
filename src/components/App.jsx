@@ -18,6 +18,10 @@ export function App() {
 
   useEffect(() => {
     const savedContacts = localStorage.getItem('contacts');
+    if (!savedContacts) {
+      return;
+    }
+
     const parsedContacts = JSON.parse(savedContacts);
     setContacts([...parsedContacts]);
     setFirstRender(false);
